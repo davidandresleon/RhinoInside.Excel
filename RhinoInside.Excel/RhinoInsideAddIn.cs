@@ -13,6 +13,7 @@ using Microsoft.Office.Tools.Excel;
 using Rhino.Runtime.InProcess;
 
 namespace RhinoInside.Excel
+
 {
     public partial class RhinoInsideAddIn
     {
@@ -49,20 +50,24 @@ namespace RhinoInside.Excel
             try
             {
 
-                //TODO >> grab Excel product and ver and replace ProductName
 
-                //var scheme_name = ProductName().Replace(' ', '-');
-                //var scheme_name = "RhinoInsideExcel";
-                
-                //m_rhino_core = new Rhino.Runtime.InProcess.RhinoCore(new[] { $"/scheme={scheme_name}" });
-                //m_rhino_core = new Rhino.Runtime.InProcess.RhinoCore(null, WindowStyle.Maximized);
+                //TODO >> grab Excel product name for scheme
+                var scheme_name = "RhinoInsideExcel";
 
-                m_rhino_core = new Rhino.Runtime.InProcess.RhinoCore();
+
+                //Run Rhino.Inside no UI
+                m_rhino_core = new Rhino.Runtime.InProcess.RhinoCore(new[] { $"/scheme={scheme_name}" });
+
+                //TODO >> Run Rhino.Inside with UI - Error -200
+                //m_rhino_core = new Rhino.Runtime.InProcess.RhinoCore(new[] { $"/scheme={scheme_name}" }, WindowStyle.Maximized);
+
 
             }
             catch (Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                //System.Windows.Forms.MessageBox.Show(ex.Message);
+                System.Windows.Forms.MessageBox.Show("Cannot load Rhino Inside Addin");
+
             }
         }
 
@@ -77,6 +82,9 @@ namespace RhinoInside.Excel
                 // ignored
             }
         }
+
+
+
 
         #region VSTO generated code
 
